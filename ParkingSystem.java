@@ -25,10 +25,16 @@ public class ParkingSystem {
             return;
         }
         Car c = entryQueue.dequeue();
+   
+        // Finding Slots.........
         for (Floor f : floors) {
+
+            // if its true then it goes floor by floor....
             if (!f.isFull()) {
                 Slot s = f.assignSlot(c);
                 if (s != null) {
+
+                    // Needed for locateCar() nd exit()....
                     carSlotMap.put(c.number, s);
                     System.out.println("Car " + c.number + " parked at " + s.slotId);
                     return;
